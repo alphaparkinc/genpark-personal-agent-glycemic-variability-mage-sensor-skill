@@ -1,0 +1,59 @@
+{
+  "name": "genpark-personal-agent-glycemic-variability-mage-sensor-skill",
+  "version": "1.0.0",
+  "title": "Continuous Glycemic Variability & MAGE Glucose Dynamics Skill",
+  "description": "Mean Amplitude of Glycemic Excursions (MAGE), Continuous Overall Net Glycemic Action (CONGA), and postprandial glucose spike area under curve (AUC). Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "cgm",
+    "glycemic-variability",
+    "mage",
+    "glucose-dynamics",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_mage_and_conga_variability",
+      "description": "Compute MAGE (Mean Amplitude of Glycemic Excursions) and Standard Deviation across CGM telemetry array.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "glucose_readings_mg_dl": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "sampling_interval_minutes": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "glucose_readings_mg_dl"
+        ]
+      }
+    },
+    {
+      "name": "synthesize_postprandial_attenuation_protocol",
+      "description": "Synthesize immediate behavioral and supplement interventions to flatten glucose spike excursion.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "peak_glucose_delta_mg_dl": {
+            "type": "number"
+          },
+          "duration_above_140_minutes": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "peak_glucose_delta_mg_dl"
+        ]
+      }
+    }
+  ]
+}
